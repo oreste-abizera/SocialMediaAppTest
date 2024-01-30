@@ -117,7 +117,7 @@ const SignInScreen = ({ isDarkMode }: Props) => {
           justifyContent: "center",
         }}
       >
-        <Text style={{ color: isDarkMode ? "white" : "#7F97AC" }}>
+        <Text style={{ color: isDarkMode ? "#688CAC" : "#7F97AC" }}>
           Don't have an account?
         </Text>
         <Text style={{ color: "#3385FF", marginLeft: 8 }}>Sign Up</Text>
@@ -182,6 +182,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 24,
+    shadowColor: "#3385FF",
+    shadowOffset: {
+      width: 0,
+      height: 20,
+    },
+    // shadowRadius: 20,
+    shadowOpacity: 0.1,
+    elevation: 20,
   },
   signInButtonText: {
     color: "#FFFFFF",
