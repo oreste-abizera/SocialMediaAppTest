@@ -16,22 +16,32 @@ type Props = {
   isDarkMode: boolean;
 };
 
+const HorizontalLine = () => (
+  <View style={{ flex: 1, height: 1, backgroundColor: "#7F97AC" }} />
+);
+
 const SignInScreen = ({ isDarkMode }: Props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { color: isDarkMode ? "white" : "black" }]}>
-        Hi There
+        Hi There!
       </Text>
       <Text style={styles.subtitle}>Welcome back, Sign in to your account</Text>
+
+      {/* Email Input */}
       <View
         style={[styles.inputContainer, isDarkMode && styles.darkInputContainer]}
       >
         <TextInput
           placeholder="Your email"
           style={[styles.input, isDarkMode && styles.darkInput]}
+          placeholderTextColor={isDarkMode ? "#90BAE4" : "#5F7993"}
         />
       </View>
+
+      {/* Password Input */}
       <View
         style={[styles.inputContainer, isDarkMode && styles.darkInputContainer]}
       >
@@ -39,6 +49,7 @@ const SignInScreen = ({ isDarkMode }: Props) => {
           placeholder="Your password"
           style={[styles.input, isDarkMode && styles.darkInput]}
           secureTextEntry={!isPasswordVisible}
+          placeholderTextColor={isDarkMode ? "#90BAE4" : "#5F7993"}
         />
         <Ionicons
           name={isPasswordVisible ? "eye-off" : "eye"}
@@ -48,59 +59,65 @@ const SignInScreen = ({ isDarkMode }: Props) => {
           color="#5F7993"
         />
       </View>
+
       <Text style={styles.forgotPassword}>Forgot password</Text>
+
+      {/* Sign In Button */}
       <TouchableOpacity style={styles.signInButton}>
         <Text style={styles.signInButtonText}>Sign In</Text>
+        <Ionicons
+          name="chevron-forward"
+          size={20}
+          color="#FFFFFF"
+          style={{ marginLeft: 4 }}
+        />
       </TouchableOpacity>
+
+      {/* OR Line */}
       <View
         style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
       >
-        <View style={{ flex: 1, height: 1, backgroundColor: "#E0E0E0" }} />
-        <Text style={{ color: "#5F7993", marginHorizontal: 8 }}>OR</Text>
-        <View style={{ flex: 1, height: 1, backgroundColor: "#E0E0E0" }} />
+        <HorizontalLine />
+        <Text style={{ color: "#7F97AC", marginHorizontal: 8, fontSize: 12 }}>
+          OR
+        </Text>
+        <HorizontalLine />
       </View>
+
+      {/* Social Buttons */}
       <View
-        style={{ display: "flex", flexDirection: "row", marginVertical: 16 }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginVertical: 24,
+        }}
       >
         <TouchableOpacity
-          style={{
-            marginRight: 8,
-            borderColor: "#E0E0E0",
-            borderWidth: 1,
-            borderRadius: 12,
-            padding: 20,
-            width: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Image
-            source={isDarkMode ? whiteAppleImage : appleImage}
-            style={{ height: 30, resizeMode: "contain" }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            marginLeft: 8,
-            borderColor: "#E0E0E0",
-            borderWidth: 1,
-            borderRadius: 12,
-            padding: 20,
-            width: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          style={[styles.socialButtonStyle, { marginRight: 16 }]}
         >
           <Image
             source={googleImage}
-            style={{ height: 30, resizeMode: "contain" }}
+            style={{ height: 23, width: 23, resizeMode: "contain" }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButtonStyle}>
+          <Image
+            source={isDarkMode ? whiteAppleImage : appleImage}
+            style={{ height: 23, width: 23, resizeMode: "contain" }}
           />
         </TouchableOpacity>
       </View>
-      <View style={{ display: "flex", flexDirection: "row" }}>
-        <Text style={{ color: isDarkMode ? "white" : "black" }}>
+
+      {/* Sign Up Link */}
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ color: isDarkMode ? "white" : "#7F97AC" }}>
           Don't have an account?
         </Text>
         <Text style={{ color: "#3385FF", marginLeft: 8 }}>Sign Up</Text>
@@ -161,6 +178,7 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     paddingHorizontal: 20,
     display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 24,
@@ -169,6 +187,16 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "700",
+  },
+  socialButtonStyle: {
+    borderColor: "#7F97AC",
+    borderWidth: 1,
+    borderRadius: 16,
+    height: 56,
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

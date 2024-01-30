@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 type Props = {
@@ -9,28 +9,47 @@ type Props = {
 
 const CustomHeader = (props: Props) => {
   return (
-    <View style={styles.container}>
-      <View style={{ display: "flex", flexDirection: "row" }}>
+    <View style={[styles.container]}>
+      {/* back button */}
+      <TouchableOpacity
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          borderWidth: 1,
+          borderColor: !props.isDarkMode ? "#F4F9FF" : "#364452",
+          borderRadius: 50,
+          paddingRight: 12,
+          paddingVertical: 4,
+        }}
+      >
         <Ionicons
           name="chevron-back"
-          size={24}
-          color={props.isDarkMode ? "white" : "black"}
+          size={18}
+          color={props.isDarkMode ? "white" : "#212B36"}
         />
         <Text
-          style={{ marginLeft: 8, color: props.isDarkMode ? "white" : "black" }}
+          style={{
+            marginLeft: 4,
+            color: props.isDarkMode ? "white" : "#212B36",
+          }}
         >
           Back
         </Text>
-      </View>
-      <Text style={{ color: props.isDarkMode ? "white" : "black" }}>
-        Sign In
+      </TouchableOpacity>
+      <Text
+        style={{
+          color: props.isDarkMode ? "white" : "#212B36",
+          fontWeight: "600",
+        }}
+      >
+        Sigh In
       </Text>
       <View>
         {/* change modes */}
         <Ionicons
           name={props.isDarkMode ? "sunny" : "moon"}
           size={24}
-          color={props.isDarkMode ? "white" : "black"}
+          color={props.isDarkMode ? "white" : "#212B36"}
           onPress={() => props.setIsDarkMode(!props.isDarkMode)}
         />
       </View>
@@ -40,25 +59,15 @@ const CustomHeader = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 40,
     marginBottom: 20,
     width: "100%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    height: 80,
-    paddingHorizontal: 16,
-    // box shadow
-    // shadowColor: "#000000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 4,
-    // },
-    // shadowOpacity: 0.05,
-    // shadowRadius: 4,
-    // // elevation (for Android)
-    // elevation: 5,
+    minHeight: 72,
+    paddingHorizontal: 23,
   },
 });
 
