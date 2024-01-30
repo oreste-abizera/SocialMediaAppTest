@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
     borderBottomColor: "rgba(229, 242, 255, 0.80)",
     shadowColor: "#000",
     shadowOpacity: 0.13,
-    elevation: 21,
+    elevation: 4,
     shadowOffset: {
-      width: -13,
-      height: 21,
+      width: 0,
+      height: 4,
     },
   },
   containerDark: {
